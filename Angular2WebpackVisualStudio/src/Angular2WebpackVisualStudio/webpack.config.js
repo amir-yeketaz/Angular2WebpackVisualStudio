@@ -69,11 +69,29 @@ module.exports = function makeWebpackConfig() {
                 },
                 exclude: [/node_modules\/(?!(ng2-.+))/]
             },
+            
+            //For Copy fonts
+           {
+                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[hash].[ext]"
+            }, {
+                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[hash].[ext]"
+            }, {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=application/octet-stream&name=fonts/[name].[hash].[ext]"
+            }, {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "file?name=fonts/[name].[hash].[ext]"
+            }, {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: "url?limit=10000&mimetype=image/svg+xml&name=fonts/[name].[hash].[ext]"
+            },
 
             // copy those assets to output
-            {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file?name=fonts/[name].[hash].[ext]?'
+            //{
+                test: /\.(png|jpe?g|gif|ico)$/,
+                loader: 'file?name=assets/[name].[hash].[ext]?'
             },
 
             // Support for *.json files.
